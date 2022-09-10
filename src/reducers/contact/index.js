@@ -1,10 +1,22 @@
+import { GET_LIST_CONTACT } from "../../actions/ContactAction";
+
 // standar penulisan reducer
 const initialState = {
-    
+    getListContactResult: false,
+    getListContactLoading: false,
+    getListContactError: false,
 }
 
 const contact = ( state = initialState, action ) => {
     switch(action.type){
+        case GET_LIST_CONTACT: 
+            console.log('4. Masuk ke Reducer', action);
+            return {
+                ...state,
+                getListContactResult: action.payload.data,
+                getListContactLoading: action.payload.loading,
+                getListContactError: action.payload.errorMessage,
+            }
         default: 
             return state;
     }

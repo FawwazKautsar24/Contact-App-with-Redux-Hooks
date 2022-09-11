@@ -1,3 +1,4 @@
+import AddContact from "./AddContact";
 import ListContact from "./ListContact";
 
-export { ListContact };
+export { AddContact, ListContact };

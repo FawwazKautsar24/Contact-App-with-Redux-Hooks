@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getListContact } from "../../actions/ContactAction";
+import { getListContact, deleteContact } from "../../actions/ContactAction";
 
 function ListContact(){
-    const { getListContactResult, getListContactLoading, getListContactError } = useSelector((state) => state.contactReducer);
+    const { getListContactResult, getListContactLoading, getListContactError, deleteContactResult } = useSelector((state) => state.contactReducer);
 
     const dispatch = useDispatch();
     
@@ -12,6 +12,13 @@ function ListContact(){
         console.log('1. useEffect ComponentDidMount');
         dispatch(getListContact());
     }, [dispatch]);
+
+    useEffect(() => {
+        if(deleteContactResult){
+            console.log('5. Masuk ComponentDidUpdate');
+            dispatch(getListContact());
+        }
+    }, [deleteContactResult, dispatch]);
     
     return (
         <div>
@@ -19,7 +26,11 @@ function ListContact(){
             {getListContactResult ? (
                 getListContactResult.map((contact) => {
                     return (
-                        <p key={contact.id}>{contact.nama} - {contact.noHP}</p>
+                        <p key={contact.id}>
+                            {contact.nama} - 
+                            {contact.noHP} - 
+                            <button onClick={() => dispatch(deleteContact(contact.id))}>Delete</button>
+                        </p>
                     )
                 })
             ) : getListContactLoading ? (

@@ -1,4 +1,4 @@
-import { GET_LIST_CONTACT, ADD_CONTACT, DELETE_CONTACT } from "../../actions/ContactAction";
+import { GET_LIST_CONTACT, ADD_CONTACT, DELETE_CONTACT, GET_EDIT_DATA_CONTACT, EDIT_CONTACT } from "../../actions/ContactAction";
 
 // standar penulisan reducer
 const initialState = {
@@ -9,10 +9,16 @@ const initialState = {
     addContactResult: false,
     addContactLoading: false,
     addContactError: false,
-
+    
     deleteContactResult: false,
     deleteContactLoading: false,
     deleteContactError: false,
+    
+    getEditDataContactResult: false,
+
+    editContactResult: false,
+    editContactLoading: false,
+    editContactError: false,
 }
 
 const contact = ( state = initialState, action ) => {
@@ -32,19 +38,33 @@ const contact = ( state = initialState, action ) => {
                 addContactLoading: action.payload.loading,
                 addContactError: action.payload.errorMessage,
             }
-        
-        case DELETE_CONTACT: 
-            console.log('4. Masuk ke Reducer', action);
+            
+            case DELETE_CONTACT: 
             return {
                 ...state,
                 deleteContactResult: action.payload.data,
                 deleteContactLoading: action.payload.loading,
                 deleteContactError: action.payload.errorMessage,
             }
-            
+        
+        case GET_EDIT_DATA_CONTACT: 
+        return {
+            ...state,
+            getEditDataContactResult: action.payload.data,
+        }
+        
+        case EDIT_CONTACT: 
+            console.log('4. Masuk ke Reducer', action);
+            return {
+                ...state,
+                editContactResult: action.payload.data,
+                editContactLoading: action.payload.loading,
+                editContactError: action.payload.errorMessage,
+            }
+
         default: 
             return state;
+        }
     }
-}
-
+    
 export default contact;

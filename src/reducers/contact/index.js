@@ -54,7 +54,6 @@ const contact = ( state = initialState, action ) => {
         }
         
         case EDIT_CONTACT: 
-            console.log('4. Masuk ke Reducer', action);
             return {
                 ...state,
                 editContactResult: action.payload.data,

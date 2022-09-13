@@ -9,7 +9,6 @@ function ListContact(){
     
     useEffect(() => {
         // get list contact dengan Redux (terpisah di ContactAction.js)
-        console.log('0. useEffect ComponentDidMount');
         dispatch(getListContact());
     }, [dispatch]);
 

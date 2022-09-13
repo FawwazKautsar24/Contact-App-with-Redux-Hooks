@@ -13,7 +13,6 @@ function AddContact(){
 
     const handleSubmit = (e) => {
         // mencegah terjadinya reload setelah klik submit
-        console.log('1. Masuk Handle Submit');
         e.preventDefault();
 
         if(id){
@@ -44,7 +43,6 @@ function AddContact(){
     
     useEffect(() => {
         if(editContactResult){
-            console.log('5. Masuk ComponentDidUpdate');
             dispatch(getListContact());
 
             // auto clear form after click submit

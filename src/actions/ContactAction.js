@@ -156,7 +156,6 @@ export const getEditDataContact = (data) => {
 
 export const editContact = (data) => {
     // dispatch penghubung antara View -> Action -> Reducers
-    console.log('2. Masuk Contact Action');
 
     return (dispatch) => {
         // loading
@@ -178,7 +177,6 @@ export const editContact = (data) => {
         })
             .then((response) => {
                 // berhasil get API
-                console.log('3. Berhasil Dapat Data: ', response.data);
                 dispatch({
                     type: EDIT_CONTACT,
                     payload: {
@@ -190,7 +188,6 @@ export const editContact = (data) => {
             })
             .catch((error) => {
                 // gagal get API
-                console.log('3. Gagal Dapat Data: ', error.message);
                 dispatch({
                     type: EDIT_CONTACT,
                     payload: {
